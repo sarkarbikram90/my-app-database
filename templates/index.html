@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Database</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 20px auto; }
+        form { background: #f4f4f4; padding: 20px; border-radius: 8px; }
+        input { display: block; margin: 10px 0; padding: 8px; width: 95%; }
+        button { background: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #333; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>Add Employee to Database</h1>
+    
+    <!-- This form sends data to the /add route in app.py -->
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="text" name="country" placeholder="Country" required>
+        <input type="number" name="salary" placeholder="Salary" required>
+        <button type="submit">Save to Database</button>
+    </form>
+
+    <h2>Current Data in Database</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Country</th>
+            <th>Salary</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee['id'] }}</td>
+            <td>{{ employee['name'] }}</td>
+            <td>{{ employee['age'] }}</td>
+            <td>{{ employee['country'] }}</td>
+            <td>${{ employee['salary'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
