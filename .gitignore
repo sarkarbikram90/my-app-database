@@ -1,2 +1,5 @@
 .env
 .db
+*.db
+*.sqlite
+*.sqlite3
